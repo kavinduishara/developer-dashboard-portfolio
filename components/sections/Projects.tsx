@@ -1,4 +1,3 @@
-import { FadeIn } from "../motion/FadeIn";
 import { StaggerContainer } from "../motion/StaggerContainer";
 import { SectionHeading } from "../ui/SectionHeading";
 import { ProjectCard } from "../ui/ProjectCard";
@@ -6,10 +5,10 @@ import { projects } from "../../data/projects";
 
 export function Projects() {
   return (
-    <section id="projects" className="scroll-mt-24">
-      <FadeIn className="rounded-[1.75rem] border border-slate-200 bg-white/80 p-8 shadow-sm backdrop-blur dark:border-slate-800 dark:bg-slate-900/70">
-        <SectionHeading eyebrow="Projects" title="Selected builds that blend product thinking with engineering craft" />
-        <StaggerContainer className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+    <section id="projects" className="scroll-mt-24 border-t border-slate-800/60 px-6 py-20 sm:px-8">
+      <div className="mx-auto max-w-6xl">
+        <SectionHeading eyebrow="projects" command="ls ./builds" title="Selected builds that blend product thinking with engineering craft" />
+        <StaggerContainer className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {projects.map((project) => (
             <div key={project.slug}>
               <ProjectCard
@@ -23,7 +22,7 @@ export function Projects() {
             </div>
           ))}
         </StaggerContainer>
-      </FadeIn>
+      </div>
     </section>
   );
 }

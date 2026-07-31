@@ -10,7 +10,7 @@ import { profile } from "../data/site";
 
 export default function Home() {
   return (
-    <>
+    <div className="bg-slate-950 text-slate-100">
       <Hero
         name={profile.name}
         title={profile.title}
@@ -27,6 +27,6 @@ export default function Home() {
       <Research />
       <Education />
       <Contact />
-    </>
+    </div>
   );
 }

@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { FiGithub, FiLinkedin, FiMail, FiPhone } from "react-icons/fi";
-import { FadeIn } from "../motion/FadeIn";
 import { SectionHeading } from "../ui/SectionHeading";
 
 interface FormState {
@@ -45,47 +44,72 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="scroll-mt-24">
-      <FadeIn className="rounded-[1.75rem] border border-slate-200 bg-white/80 p-8 shadow-sm backdrop-blur dark:border-slate-800 dark:bg-slate-900/70">
-        <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
-          <div>
-            <SectionHeading eyebrow="Contact" title="Let’s build something meaningful together" description="Available for freelance work, internships, and collaborative product development." />
-            <div className="mt-8 space-y-4 text-sm text-slate-600 dark:text-slate-300">
-              <a href="mailto:kavinduishara2923@gmail.com" className="flex items-center gap-3 transition hover:text-cyan-600">
-                <FiMail /> <span>kavinduishara2923@gmail.com</span>
-              </a>
-              <a href="tel:+94785198734" className="flex items-center gap-3 transition hover:text-cyan-600">
-                <FiPhone /> <span>+94 785 198 734</span>
-              </a>
-              <a href="https://github.com/kavinduishara" target="_blank" rel="noreferrer" className="flex items-center gap-3 transition hover:text-cyan-600">
-                <FiGithub /> <span>github.com/kavinduishara</span>
-              </a>
-              <a href="https://www.linkedin.com/in/kavindu-rathnayaka-b1b201416/" target="_blank" rel="noreferrer" className="flex items-center gap-3 transition hover:text-cyan-600">
-                <FiLinkedin /> <span>linkedin.com/in/kavindu-rathnayaka-b1b201416</span>
-              </a>
-            </div>
+    <section id="contact" className="scroll-mt-24 border-t border-slate-800/60 px-6 py-20 sm:px-8">
+      <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+        <div>
+          <SectionHeading
+            eyebrow="contact"
+            command="./send --message"
+            title="Let's build something meaningful together"
+            description="Available for freelance work, internships, and collaborative product development."
+          />
+          <div className="mt-8 space-y-4 font-mono text-sm text-slate-400">
+            <a href="mailto:kavinduishara2923@gmail.com" className="flex items-center gap-3 transition hover:text-cyan-400">
+              <FiMail /> kavinduishara2923@gmail.com
+            </a>
+            <a href="tel:+94785198734" className="flex items-center gap-3 transition hover:text-cyan-400">
+              <FiPhone /> +94 785 198 734
+            </a>
+            <a href="https://github.com/kavinduishara" target="_blank" rel="noreferrer" className="flex items-center gap-3 transition hover:text-cyan-400">
+              <FiGithub /> github.com/kavinduishara
+            </a>
+            <a href="https://www.linkedin.com/in/kavindu-rathnayaka-b1b201416/" target="_blank" rel="noreferrer" className="flex items-center gap-3 transition hover:text-cyan-400">
+              <FiLinkedin /> linkedin.com/in/kavindu-rathnayaka-b1b201416
+            </a>
           </div>
-
-          <form onSubmit={handleSubmit} className="space-y-4 rounded-[1.5rem] border border-slate-200 bg-slate-50 p-6 dark:border-slate-800 dark:bg-slate-950/70">
-            <div>
-              <label className="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-200" htmlFor="name">Name</label>
-              <input id="name" value={form.name} onChange={(event) => handleChange("name", event.target.value)} className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 outline-none ring-0 focus:border-cyan-500 dark:border-slate-700 dark:bg-slate-900" placeholder="Your name" />
-            </div>
-            <div>
-              <label className="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-200" htmlFor="email">Email</label>
-              <input id="email" type="email" value={form.email} onChange={(event) => handleChange("email", event.target.value)} className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 outline-none ring-0 focus:border-cyan-500 dark:border-slate-700 dark:bg-slate-900" placeholder="you@example.com" />
-            </div>
-            <div>
-              <label className="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-200" htmlFor="message">Message</label>
-              <textarea id="message" value={form.message} onChange={(event) => handleChange("message", event.target.value)} rows={5} className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 outline-none ring-0 focus:border-cyan-500 dark:border-slate-700 dark:bg-slate-900" placeholder="Tell me about your idea or project." />
-            </div>
-            <button type="submit" className="rounded-full bg-cyan-600 px-5 py-3 font-semibold text-white transition hover:bg-cyan-500">
-              Send Message
-            </button>
-            {status.type !== "idle" ? <p className={`text-sm ${status.type === "success" ? "text-emerald-600" : "text-rose-600"}`}>{status.message}</p> : null}
-          </form>
         </div>
-      </FadeIn>
+
+        <form onSubmit={handleSubmit} className="space-y-4 rounded-xl border border-slate-800 bg-slate-900/40 p-6">
+          <div>
+            <label className="mb-2 block text-sm font-medium text-slate-300" htmlFor="name">Name</label>
+            <input
+              id="name"
+              value={form.name}
+              onChange={(event) => handleChange("name", event.target.value)}
+              className="w-full rounded-lg border border-slate-800 bg-slate-950 px-4 py-3 text-slate-100 outline-none transition focus:border-cyan-500"
+              placeholder="Your name"
+            />
+          </div>
+          <div>
+            <label className="mb-2 block text-sm font-medium text-slate-300" htmlFor="email">Email</label>
+            <input
+              id="email"
+              type="email"
+              value={form.email}
+              onChange={(event) => handleChange("email", event.target.value)}
+              className="w-full rounded-lg border border-slate-800 bg-slate-950 px-4 py-3 text-slate-100 outline-none transition focus:border-cyan-500"
+              placeholder="you@example.com"
+            />
+          </div>
+          <div>
+            <label className="mb-2 block text-sm font-medium text-slate-300" htmlFor="message">Message</label>
+            <textarea
+              id="message"
+              value={form.message}
+              onChange={(event) => handleChange("message", event.target.value)}
+              rows={5}
+              className="w-full rounded-lg border border-slate-800 bg-slate-950 px-4 py-3 text-slate-100 outline-none transition focus:border-cyan-500"
+              placeholder="Tell me about your idea or project."
+            />
+          </div>
+          <button type="submit" className="rounded-full bg-cyan-300 px-5 py-3 font-semibold text-slate-900 transition hover:bg-cyan-200">
+            Send Message
+          </button>
+          {status.type !== "idle" ? (
+            <p className={`text-sm ${status.type === "success" ? "text-emerald-400" : "text-rose-400"}`}>{status.message}</p>
+          ) : null}
+        </form>
+      </div>
     </section>
   );
 }

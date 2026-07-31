@@ -10,7 +10,7 @@ export interface ProfileInfo {
 }
 
 export const profile: ProfileInfo = {
-  name: "Kavindu Ishara Rathnayaka",
+  name: "Kavindu",
   title: "Software Engineer",
   phone: "+94785198734",
   email: "kavinduishara2923@gmail.com",
