@@ -1,32 +1,10 @@
-export interface Project {
-  slug: string;
-  title: string;
-  dateRange: string;
-  githubUrl: string;
-  shortDescription: string;
-  description: string;
-  problem: string;
-  approach: string;
-  stack: string[];
-  links?: Array<{ label: string; href: string }>;
-  // Optional richer case-study fields — fill these in per project as you go.
-  // Any project missing one just falls back to the simpler layout.
-  heroImage?: string;
-  liveUrl?: string;
-  features?: { title: string; description: string }[];
-  specs?: { label: string; value: string }[];
-  codeSnippet?: string;
-  deepDive?: { title: string; description: string }[];
-}
-
 export const projects: Project[] = [
   {
     slug: "project-management-tool",
     title: "Project Management Tool",
     dateRange: "Aug. 2025 — Oct. 2025",
     githubUrl: "https://github.com/kavinduishara/project-management",
-    liveUrl: "https://app.kavindu.dev", // Matching the URL provided in the SSL Setup screenshot
-    heroImage: "/images/projects/project-management-hero.jpg", // Replace with your actual asset path
+    liveUrl: "https://app.kavindu.dev", 
     shortDescription:
       "A real-time collaboration platform for task orchestration, live updates, and scalable deployment.",
     description:
@@ -89,6 +67,36 @@ export const projects: Project[] = [
     links: [
       { label: "GitHub", href: "https://github.com/kavinduishara/pos" },
     ],
+    specs: [
+      { label: "Frontend", value: "React & Tailwind CSS" },
+      { label: "Backend", value: "Spring Boot (Java)" },
+      { label: "Database", value: "PostgreSQL" },
+      { label: "Security", value: "Spring Security & JWT" }
+    ],
+    features: [
+      {
+        title: "Granular Security (RBAC)",
+        description: "Robust role-based access control ensuring managers, cashiers, and admins only interact with authorized endpoints and UI states."
+      },
+      {
+        title: "Automated Billing & Sales",
+        description: "High-throughput checkout system that handles transactional computation and inventory updates concurrently."
+      },
+      {
+        title: "Analytical Dashboard",
+        description: "Real-time metrics visualization reflecting stock levels, sales velocity, and multi-branch operational performance."
+      }
+    ],
+    deepDive: [
+      {
+        title: "Stateless Security Architecture",
+        description: "Leveraged Spring Security combined with stateless JSON Web Tokens (JWT) to protect REST API endpoints. This architecture minimizes database round-trips for authorization queries while safeguarding sensitive retail data."
+      },
+      {
+        title: "Data Auditing & Branch Management",
+        description: "Configured PostgreSQL with structural indexing and foreign key constraints optimized for multi-branch isolation, guaranteeing that inventory valuations and transaction metrics remain consistent across overlapping point-of-sale operational shifts."
+      }
+    ]
   },
   {
     slug: "academic-records-management-system",
@@ -107,6 +115,36 @@ export const projects: Project[] = [
     links: [
       { label: "GitHub", href: "https://github.com/JHansiduYapa/University-Administrative-Automation-System-for-Management-Assistant" },
     ],
+    specs: [
+      { label: "Frontend", value: "React" },
+      { label: "Backend", value: "Spring Boot" },
+      { label: "Database", value: "PostgreSQL" },
+      { label: "Architecture", value: "REST APIs" }
+    ],
+    features: [
+      {
+        title: "Academic Track System",
+        description: "Comprehensive records processing tracking student lifecycle milestones, course enrollments, and organizational progression."
+      },
+      {
+        title: "GPA Engine",
+        description: "Automated workflow calculations parsing course credit factors and grading inputs to deliver instant, audit-ready GPA figures."
+      },
+      {
+        title: "Administrative Controls",
+        description: "Tailored UI workflows providing administrative assistants with unified, batch-processing dashboards for complex record modifications."
+      }
+    ],
+    deepDive: [
+      {
+        title: "Relational Modeling Validation",
+        description: "Designed strict normalization rules within PostgreSQL to balance complex relationship handling between students, courses, terms, and final grading schemas, preventing anomaly generation during batch data modifications."
+      },
+      {
+        title: "Business Logic Encapsulation",
+        description: "Isolated critical academic rule evaluations inside Spring Boot service layers. This ensures that GPA calculations, prerequisite validations, and core data processing constraints are enforced uniformly, independent of client-side operations."
+      }
+    ]
   },
   {
     slug: "real-time-video-calling-app",
@@ -125,5 +163,35 @@ export const projects: Project[] = [
     links: [
       { label: "GitHub", href: "https://github.com/kavinduishara/webrtc" },
     ],
-  },
+    specs: [
+      { label: "Frontend", value: "React (JavaScript)" },
+      { label: "Signaling & State", value: "Firebase Firestore" },
+      { label: "Protocols", value: "WebRTC (STUN/TURN)" },
+      { label: "Streaming Types", value: "Audio, Video, & Object Data" }
+    ],
+    features: [
+      {
+        title: "Peer-to-Peer Media",
+        description: "High-quality, low-latency audio/video streaming directly between connected browser instances via native WebRTC pathways."
+      },
+      {
+        title: "Firestore Signaling",
+        description: "Serverless handshake setup utilizing real-time Firestore listeners to rapidly exchange SDP offers, answers, and ICE candidates."
+      },
+      {
+        title: "Live Document Sync",
+        description: "Simultaneous collaboration space allowing users to cross-reference data and keep document states synchronized during active video calls."
+      }
+    ],
+    deepDive: [
+      {
+        title: "WebRTC Handshake Management",
+        description: "Leveraged Firestore's event-driven document streams to orchestrate complex connection setups. Handshakes systematically catch incoming network changes, ensuring resilient peer initialization across uneven NAT configurations."
+      },
+      {
+        title: "Media Framework Optimization",
+        description: "Configured stream manipulation strategies using React hooks to manage local media tracks safely. This structure handles programmatic device changes, audio toggles, and screen configurations dynamically without breaking established streams."
+      }
+    ]
+  }
 ];
