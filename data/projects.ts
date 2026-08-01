@@ -1,3 +1,37 @@
+type ProjectLink = {
+  label: string;
+  href: string;
+};
+
+type ProjectDetail = {
+  title: string;
+  description: string;
+};
+
+type ProjectSpec = {
+  label: string;
+  value: string;
+};
+
+type Project = {
+  slug: string;
+  title: string;
+  dateRange: string;
+  githubUrl: string;
+  liveUrl?: string;
+  heroImage?: string;
+  shortDescription: string;
+  description: string;
+  problem: string;
+  approach: string;
+  stack: string[];
+  links: ProjectLink[];
+  specs: ProjectSpec[];
+  features?: ProjectDetail[];
+  codeSnippet?: string;
+  deepDive?: ProjectDetail[];
+};
+
 export const projects: Project[] = [
   {
     slug: "project-management-tool",

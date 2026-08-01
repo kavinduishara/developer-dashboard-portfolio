@@ -1,4 +1,7 @@
+import Link from "next/link";
+import { research } from "../../data/research";
 import { SectionHeading } from "../ui/SectionHeading";
+import { FiArrowUpRight, FiGithub } from "react-icons/fi";
 
 export function Research() {
   return (
@@ -9,32 +12,36 @@ export function Research() {
             <SectionHeading
               eyebrow="research"
               command="./run --thesis"
-              title="QoS Aware Distributed Query Processing System"
+              title={research.title}
               description="A flagship research direction focused on distributed SQL processing, performance budgets, and intelligent execution strategies."
             />
-            <p className="mt-6 text-base leading-7 text-slate-400">
-              Designing a distributed SQL processing topology with machine learning-based execution
-              optimizations to improve performance budgets while securing cluster availability
-              benchmarks across multi-instance environments.
-            </p>
+            <p className="mt-6 text-base leading-7 text-slate-400">{research.summary}</p>
           </div>
           <div className="rounded-xl border border-slate-800 bg-slate-950/60 p-6">
             <div className="flex flex-wrap gap-2">
-              {["PostgreSQL", "Docker", "Machine Learning", "GCP"].map((item) => (
+              {research.technologies.slice(0, 4).map((item) => (
                 <span key={item} className="rounded-md bg-slate-900 px-2 py-1 font-mono text-xs text-cyan-400">
                   {item}
                 </span>
               ))}
             </div>
-            <a
-              href="https://github.com/kavinduishara/final_year_research"
-              target="_blank"
-              rel="noreferrer"
+            <Link
+              href="/research"
               className="mt-6 inline-flex items-center gap-1 font-semibold text-cyan-400 transition hover:text-cyan-300"
             >
-              View research repository →
-            </a>
+              Read thorough research details <FiArrowUpRight size={18} />
+            </Link>
+            
+            
           </div>
+          <a
+            href={research.repositoryUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-slate-400 transition hover:text-cyan-300"
+          >
+            <FiGithub size={16} /> View source
+          </a>
         </div>
       </div>
     </section>

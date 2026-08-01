@@ -17,7 +17,7 @@ const links: NavLink[] = [
   { href: "/#skills", label: "skills", sectionId: "skills" },
   { href: "/#experience", label: "experience", sectionId: "experience" },
   { href: "/#projects", label: "projects", sectionId: "projects", matches: ["/projects"] },
-  { href: "/#research", label: "research", sectionId: "research" },
+  { href: "/#research", label: "research", sectionId: "research", matches: ["/research"] },
   { href: "/#contact", label: "contact", sectionId: "contact" },
 ];
 
@@ -94,7 +94,10 @@ export function Navbar() {
   }, [pathname]);
 
   const isActive = (link: NavLink) => {
-    if (link.matches?.some((match) => pathname === match || pathname.startsWith(`${match}/`))) {
+    const matchesRoute = link.matches?.some((match) => pathname === match || pathname.startsWith(`${match}/`));
+    const matchesHashSection = pathname === "/" && activeSection === link.sectionId;
+
+    if (matchesRoute || matchesHashSection) {
       return true;
     }
 
@@ -102,7 +105,7 @@ export function Navbar() {
       return false;
     }
 
-    return activeSection === link.sectionId;
+    return false;
   };
 
   const navLinkClassName = (active: boolean) =>
