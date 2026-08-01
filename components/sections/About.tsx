@@ -20,7 +20,7 @@ export function About({ summary }: AboutProps) {
 
         <FadeIn delay={0.08} className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-slate-800">
           <Image
-            src="/images/profile-workspace.jpg"
+            src="/images/teck-stack.png"
             alt=""
             fill
             className="object-cover"
