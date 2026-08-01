@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { useEffect, useMemo, useState } from "react";
 import { FiTerminal } from "react-icons/fi";
 
 interface HeroProps {
@@ -15,6 +16,23 @@ interface HeroProps {
 
 export function Hero({ name, title }: HeroProps) {
   const shouldReduceMotion = useReducedMotion();
+  const roles = useMemo(
+    () => [title, "DevOps Enthusiast", "Full-Stack Developer", "Cloud Learner", "Distributed Systems Explorer"],
+    [title],
+  );
+  const [activeRoleIndex, setActiveRoleIndex] = useState(0);
+
+  useEffect(() => {
+    if (shouldReduceMotion) {
+      return;
+    }
+
+    const timer = window.setInterval(() => {
+      setActiveRoleIndex((current) => (current + 1) % roles.length);
+    }, 2200);
+
+    return () => window.clearInterval(timer);
+  }, [roles.length, shouldReduceMotion]);
 
   return (
     <section className="relative flex min-h-[90vh] flex-col items-center justify-center overflow-hidden px-6 py-24 text-center sm:px-8">
@@ -49,7 +67,20 @@ export function Hero({ name, title }: HeroProps) {
           </motion.span>
         </h1>
 
-        <p className="text-lg font-medium text-cyan-400">{title}</p>
+        <div className="flex min-h-9 items-center justify-center overflow-hidden text-lg font-medium text-cyan-400 sm:text-xl">
+          <AnimatePresence mode="wait">
+            <motion.p
+              key={roles[activeRoleIndex]}
+              initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 14, filter: "blur(6px)" }}
+              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: -14, filter: "blur(6px)" }}
+              transition={{ duration: 0.35, ease: "easeOut" }}
+              className="font-mono"
+            >
+              {roles[activeRoleIndex]}
+            </motion.p>
+          </AnimatePresence>
+        </div>
 
         <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
           <a
