@@ -29,7 +29,7 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
       <div className="mx-auto max-w-5xl">
         <FadeIn>
           {/* Back Button */}
-          <Link href="/projects" className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-slate-500 transition hover:text-cyan-400">
+          <Link href="/#projects" className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-slate-500 transition hover:text-cyan-400">
             <FiArrowLeft size={14} /> Back to projects
           </Link>
 

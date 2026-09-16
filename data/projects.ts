@@ -33,12 +33,127 @@ type Project = {
 };
 
 export const projects: Project[] = [
+    {
+  slug: "task-manager-application",
+  title: "Task Manager Application",
+  dateRange: "Aug. 2026 — Sep. 2026",
+  githubUrl: "https://github.com/kavinduishara/task-manager-back-end",
+  liveUrl: "http://pmtool.ddnsking.com/",
+
+  shortDescription:
+    "A full-stack task management platform with role-based access control, automated deployment, and cloud infrastructure.",
+
+  description:
+    "Developed a full-stack task management application using Next.js, Node.js, Express, and MongoDB, with JWT authentication, role-based access control, and automated deployment to AWS EC2.",
+
+  problem:
+    "Teams need a structured way to manage tasks while controlling user permissions and maintaining reliable application deployments. Manual deployment and operational checks can increase maintenance effort and the risk of deployment issues.",
+
+  approach:
+    "I developed a task management platform with JWT-based authentication and role-based authorization. I implemented REST APIs for task and user management, then automated deployment and application health checks using Bash scripts and cron jobs. The application was containerized with Docker and deployed to AWS EC2 using Terraform, Nginx, and GitHub Actions CI/CD.",
+
+  stack: [
+    "Next.js",
+    "Node.js",
+    "Express",
+    "MongoDB",
+    "JWT",
+    "Docker",
+    "Bash",
+    "Cron",
+    "Nginx",
+    "AWS EC2",
+    "Terraform",
+    "GitHub Actions"
+  ],
+
+  links: [
+    {
+      label: "GitHub",
+      href: "https://github.com/kavinduishara/task-manager-back-end"
+    }
+  ],
+
+  specs: [
+    { label: "Frontend", value: "Next.js" },
+    { label: "Backend", value: "Node.js & Express" },
+    { label: "Database", value: "MongoDB Atlas" },
+    { label: "Authentication", value: "JWT & RBAC" },
+    { label: "Containerization", value: "Docker" },
+    { label: "Cloud", value: "AWS EC2" },
+    { label: "Infrastructure", value: "Terraform" },
+    { label: "CI/CD", value: "GitHub Actions" }
+  ],
+
+  features: [
+  {
+    title: "Role-Based Access Control",
+    description:
+      "Implemented JWT authentication and role-based authorization to control access to task and user management operations."
+  },
+  {
+    title: "Task Management",
+    description:
+      "Developed REST APIs for task creation, assignment, editing, deletion, and status management with authorization rules."
+  },
+  {
+    title: "Bash Deployment Automation",
+    description:
+      "Developed Bash scripts to automate application deployment, including pulling updated Docker images, managing containers, and performing application health checks."
+  },
+  {
+    title: "Cron-Based Maintenance",
+    description:
+      "Configured cron jobs to execute scheduled maintenance and automated operational tasks, reducing the need for manual intervention."
+  },
+  {
+    title: "Cloud Deployment & CI/CD",
+    description:
+      "Provisioned AWS EC2 infrastructure using Terraform and deployed containerized services with Docker, Nginx, and GitHub Actions CI/CD."
+  }
+],
+
+  codeSnippet: `# Build and run containers
+docker compose up --build -d
+
+# Check application health
+curl -f http://localhost:3000/health
+
+# View running containers
+docker ps
+
+# View application logs
+docker logs <container_name>`,
+
+deepDive: [
+  {
+    title: "Bash Scripting & Deployment Automation",
+    description:
+      "Developed Bash scripts to automate deployment workflows and application health checks. Used shell commands, conditional logic, and exit status handling to execute operational tasks and identify application failures."
+  },
+  {
+    title: "Cron Job Scheduling",
+    description:
+      "Configured Linux cron jobs to schedule recurring maintenance and automated tasks. Used crontab scheduling expressions to control execution frequency and reduce manual operational work."
+  },
+  {
+    title: "Infrastructure & Deployment",
+    description:
+      "Provisioned AWS EC2 infrastructure using Terraform and deployed the application using Docker, Nginx, and GitHub Actions. Nginx was configured as a reverse proxy for application traffic."
+  },
+  {
+    title: "Security & Authorization",
+    description:
+      "Implemented JWT authentication and role-based access control with authorization rules governing task creation, assignment, editing, and deletion."
+  }
+]
+},
   {
     slug: "project-management-tool",
     title: "Project Management Tool",
     dateRange: "Aug. 2025 — Oct. 2025",
     githubUrl: "https://github.com/kavinduishara/project-management",
-    liveUrl: "https://app.kavindu.dev", 
+    liveUrl: "", 
     shortDescription:
       "A real-time collaboration platform for task orchestration, live updates, and scalable deployment.",
     description:
@@ -84,6 +199,7 @@ export const projects: Project[] = [
       }
     ]
   },
+
   {
     slug: "multi-store-pos",
     title: "Multi-Store POS",

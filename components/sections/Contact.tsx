@@ -68,7 +68,7 @@ export function Contact() {
             </a>
           </div>
         </div>
-
+{/* 
         <form onSubmit={handleSubmit} className="space-y-4 rounded-xl border border-slate-800 bg-slate-900/40 p-6">
           <div>
             <label className="mb-2 block text-sm font-medium text-slate-300" htmlFor="name">Name</label>
@@ -108,7 +108,7 @@ export function Contact() {
           {status.type !== "idle" ? (
             <p className={`text-sm ${status.type === "success" ? "text-emerald-400" : "text-rose-400"}`}>{status.message}</p>
           ) : null}
-        </form>
+        </form> */}
       </div>
     </section>
   );
