@@ -297,6 +297,119 @@ deepDive: [
     ]
   },
   {
+  slug: "e-commerce-platform",
+  title: "E-Commerce Platform",
+  dateRange: "Add your project dates",
+  githubUrl: "https://github.com/kavinduishara/e-commerce-platform",
+  shortDescription:
+    "A backend platform for managing products, categories, user accounts, and customer orders.",
+  description:
+    "Built REST API services with NestJS, Prisma, and PostgreSQL to support customer and merchant workflows, including authentication, product catalog management, and order processing.",
+  problem:
+    "Online store operations need a reliable way to manage product inventory and customer orders while separating customer and merchant access.",
+  approach:
+    "Structured the application into NestJS modules and modeled users, products, categories, and orders in PostgreSQL with Prisma.",
+  stack: ["NestJS", "TypeScript", "Prisma", "PostgreSQL"],
+  links: [
+    {
+      label: "GitHub",
+      href: "https://github.com/kavinduishara/e-commerce-platform",
+    },
+  ],
+  specs: [
+    { label: "Backend", value: "NestJS" },
+    { label: "Language", value: "TypeScript" },
+    { label: "Database", value: "PostgreSQL" },
+    { label: "ORM", value: "Prisma" },
+    { label: "Architecture", value: "REST APIs" },
+  ],
+  features: [
+    {
+      title: "Authentication and Roles",
+      description:
+        "Supports customer and merchant registration, login with JWT authentication, and role-based access to protected operations.",
+    },
+    {
+      title: "Product and Category Management",
+      description:
+        "Provides public product and category browsing, with merchant-protected endpoints for creating, updating, and removing catalog entries.",
+    },
+    {
+      title: "Order Processing",
+      description:
+        "Creates orders with item and price details, checks product stock, and updates inventory as part of a database transaction.",
+    },
+  ],
+  deepDive: [
+    {
+      title: "Transactional Order Creation",
+      description:
+        "Processes each order within a Prisma transaction, validating product availability and decrementing stock before saving the order and its items.",
+    },
+    {
+      title: "Role-Based API Access",
+      description:
+        "Uses JWT authentication and role checks to distinguish customer actions, such as placing and viewing orders, from merchant order and catalog operations.",
+    },
+  ],
+},{
+  slug: "microservices-order-processing",
+  title: "Microservices-Based Order Processing System",
+  dateRange: "Sep. 2026 – Present",
+  githubUrl: "https://github.com/kavinduishara/order-processing",
+  shortDescription:
+    "An event-driven order processing system built as Spring Boot microservices, coordinated with Kafka and secured behind an OAuth2 API gateway.",
+  description:
+    "Built a Spring Boot microservices system where order workflows are coordinated through Kafka events using saga choreography, with Google OAuth2 authentication enforced at the API gateway.",
+  problem:
+    "Processing an order touches several independent services, and a single failure should not leave the system in an inconsistent state. A monolith or tightly coupled synchronous calls make this brittle and hard to scale.",
+  approach:
+    "Split the domain into independent Spring Boot services that communicate through Kafka events, coordinating the order workflow with saga choreography instead of a central orchestrator, and placed an API gateway in front to handle authentication.",
+  stack: ["Java", "Spring Boot", "Kafka", "OAuth2", "Microservices"],
+  links: [
+    {
+      label: "GitHub",
+      href: "https://github.com/kavinduishara/order-processing",
+    },
+  ],
+  specs: [
+    { label: "Backend", value: "Spring Boot" },
+    { label: "Language", value: "Java" },
+    { label: "Messaging", value: "Apache Kafka" },
+    { label: "Auth", value: "Google OAuth2" },
+    { label: "Architecture", value: "Microservices, Saga Choreography" },
+  ],
+  features: [
+    {
+      title: "Event-Driven Order Workflow",
+      description:
+        "Services react to Kafka events to move an order through its lifecycle, so each service stays loosely coupled and can evolve independently.",
+    },
+    {
+      title: "Secured API Gateway",
+      description:
+        "All client access goes through a single gateway that authenticates users with Google OAuth2 before requests reach the downstream services.",
+    },
+    {
+      title: "Independent Microservices",
+      description:
+        "The system is split into separate Spring Boot services with their own responsibilities, so they can be developed, deployed and scaled on their own.",
+    },
+  ],
+  deepDive: [
+    {
+      title: "Saga Choreography",
+      description:
+        "Each service publishes events after completing its local step and reacts to the events of others, with no central coordinator. This keeps distributed order processing consistent without distributed transactions.",
+    },
+    {
+      title: "Gateway-Level Authentication",
+      description:
+        "Handling Google OAuth2 at the API gateway means authentication is enforced in one place instead of being repeated in every service.",
+    },
+  ],
+},
+  {
     slug: "real-time-video-calling-app",
     title: "Real-Time Video Calling App",
     dateRange: "Apr. 2025 — Jun. 2025",
